@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/eickler/banshee
+  tag: latest
+  pullSecrets: regcred
+
+namespace: "default"
+
+loglevel: "info"

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "banshee.fullname" . }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ include "banshee.name" . }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ include "banshee.name" . }}"
+    spec:
+      imagePullSecrets:
+        - name: "{{ .Values.image.pullSecrets }}"
+      serviceAccountName: oom-listener
+      containers:
+        - name: banshee
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: RUST_LOG
+              value: "{{ .Values.loglevel }}"
