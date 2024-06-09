@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "rumsimop.name" -}}
+{{- define "banshee.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "rumsimop.fullname" -}}
+{{- define "banshee.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "rumsimop.chart" -}}
+{{- define "banshee.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "rumsimop.labels" -}}
-helm.sh/chart: {{ include "rumsimop.chart" . }}
-{{ include "rumsimop.selectorLabels" . }}
+{{- define "banshee.labels" -}}
+helm.sh/chart: {{ include "banshee.chart" . }}
+{{ include "banshee.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "rumsimop.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "rumsimop.name" . }}
+{{- define "banshee.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "banshee.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "rumsimop.serviceAccountName" -}}
+{{- define "banshee.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "rumsimop.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "banshee.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
