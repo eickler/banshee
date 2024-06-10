@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/eickler/banshee/compare/v0.1.0...v0.1.1) (2024-06-10)
+
+
+### Bug Fixes
+
+* Use correct API for recording events ([09c01be](https://github.com/eickler/banshee/commit/09c01bee435d108c0a51172a00dc565ed13b54c5))
+
 ## 0.1.0 (2024-06-10)
 
 
