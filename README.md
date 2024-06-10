@@ -1,6 +1,6 @@
 # banshee
 
-A small hack to improve visibility if your pod has been killed by the OOM killer. Note: This is currently WIP and not very much tested.
+A small hack to improve visibility if your pod has been killed by the OOM killer.
 
 ## Overview
 
@@ -23,9 +23,11 @@ Events:
   Normal   OOMKilling  161s                    banshee  Pod stress-deployment-c4c6c8bbb-tfgjj in namespace default was OOMKilled.
 ```
 
+Note that an event is recorded for every restart, so you will see several events for restart loops.
+
 ## Installation
 
-You can install it into your cluster using helm:
+banshee was tested against Kubernetes server version 1.29. You can install it into your cluster using helm:
 
 ```
 helm repo add eickler-charts https://eickler.github.io/charts/
